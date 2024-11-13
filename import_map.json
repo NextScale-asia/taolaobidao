@@ -1,0 +1,7 @@
+{
+    "imports": {
+      "$islands/": "./islands/",
+      "$components": "./components/"
+    }
+  }
+  

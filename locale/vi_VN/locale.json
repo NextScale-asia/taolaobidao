@@ -1,0 +1,17 @@
+{
+    "register": {
+        "form": {
+            "fields": {
+                "username": {
+                    "label": "Tên đăng nhập"
+                },
+                "email": {
+                    "label": "Hộp thư"
+                },
+                "password": {
+                    "label": "Mật khẩu"
+                }
+            }
+        }
+    }
+}
