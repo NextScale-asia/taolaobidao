@@ -1,47 +1,39 @@
-import { model, Schema } from "npm:mongoose";
-import { compareSync } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
+import {
+    CreationOptional,
+    DataTypes,
+    InferAttributes,
+    InferCreationAttributes,
+    Model
+} from "npm:@sequelize/core";
+import {
+    Attribute,
+    AutoIncrement,
+    NotNull,
+    PrimaryKey,
+    Default
+} from "npm:@sequelize/core/decorators-legacy";
+export class Account
+    extends Model<InferAttributes<Account>, InferCreationAttributes<Account>> {
+    @Attribute(DataTypes.INTEGER)
+    @PrimaryKey
+    @AutoIncrement
+    declare id: CreationOptional<number>;
 
-// 1. Create an interface representing a document in MongoDB.
-export interface IAccount {
-  username: string;
-  email: string;
-  password: string;
-  activated: boolean;
-  activationKey: string;
-  createAt: Date;
-  updateAt: Date;
-  verifyPassword: (plainPassword: string) => boolean;
+    @Attribute(DataTypes.STRING)
+    @NotNull
+    declare username: string;
+
+    @Attribute(DataTypes.STRING)
+    declare email: string | null;
+
+    @Attribute(DataTypes.STRING)
+    declare password: string | null;
+
+    @Attribute(DataTypes.BOOLEAN)
+    @NotNull
+    @Default(false)
+    declare activated: CreationOptional<boolean>;
+
+    @Attribute(DataTypes.STRING)
+    declare activation_key: string | null;
 }
-
-// Define schema.
-const accountSchema = new Schema<IAccount>({
-  username: {
-    type: String,
-    unique: true,
-    required: [true, "username_cannot_be_blank"],
-  },
-  email: {
-    type: String,
-    unique: true,
-    required: [true, "email_cannot_be_blank"],
-  },
-  password: { type: String, required: [true, "password_cannot_be_blank"] },
-  activated: { type: Boolean, default: false },
-  activationKey: { type: String },
-  createdAt: { type: Date, default: Date.now },
-  updatedAt: { type: Date, default: Date.now },
-});
-
-accountSchema.method(
-  "verifyPassword",
-  function (plainPassword: string): boolean {
-    let is_right = false;
-    if (compareSync(plainPassword, this.password)) {
-      is_right = true;
-    }
-    return is_right;
-  },
-);
-
-// Export model.
-export const Account = model("Account", accountSchema);

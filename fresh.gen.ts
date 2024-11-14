@@ -2,15 +2,17 @@
 // This file SHOULD be checked into source version control.
 // This file is automatically updated during development when running `dev.ts`.
 
-import * as $_private_middleware from "./routes/(private)/_middleware.ts";
-import * as $_public_layout from "./routes/(public)/_layout.tsx";
-import * as $_public_auth_middleware from "./routes/(public)/auth/_middleware.tsx";
-import * as $_public_auth_active from "./routes/(public)/auth/active.tsx";
-import * as $_public_auth_index from "./routes/(public)/auth/index.tsx";
-import * as $_public_auth_login from "./routes/(public)/auth/login.tsx";
-import * as $_public_auth_register from "./routes/(public)/auth/register.tsx";
-import * as $_public_auth_reset_password from "./routes/(public)/auth/reset-password.tsx";
-import * as $_public_auth_thank_you from "./routes/(public)/auth/thank-you.tsx";
+import * as $_locale_private_middleware from "./routes/[locale]/(private)/_middleware.ts";
+import * as $_locale_public_layout from "./routes/[locale]/(public)/_layout.tsx";
+import * as $_locale_public_auth_middleware from "./routes/[locale]/(public)/auth/_middleware.tsx";
+import * as $_locale_public_auth_active from "./routes/[locale]/(public)/auth/active.tsx";
+import * as $_locale_public_auth_index from "./routes/[locale]/(public)/auth/index.tsx";
+import * as $_locale_public_auth_login from "./routes/[locale]/(public)/auth/login.tsx";
+import * as $_locale_public_auth_register_success from "./routes/[locale]/(public)/auth/register-success.tsx";
+import * as $_locale_public_auth_register from "./routes/[locale]/(public)/auth/register.tsx";
+import * as $_locale_public_auth_reset_password from "./routes/[locale]/(public)/auth/reset-password.tsx";
+import * as $_locale_public_auth_thank_you from "./routes/[locale]/(public)/auth/thank-you.tsx";
+import * as $_locale_middleware from "./routes/[locale]/_middleware.ts";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
@@ -20,15 +22,22 @@ import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
-    "./routes/(private)/_middleware.ts": $_private_middleware,
-    "./routes/(public)/_layout.tsx": $_public_layout,
-    "./routes/(public)/auth/_middleware.tsx": $_public_auth_middleware,
-    "./routes/(public)/auth/active.tsx": $_public_auth_active,
-    "./routes/(public)/auth/index.tsx": $_public_auth_index,
-    "./routes/(public)/auth/login.tsx": $_public_auth_login,
-    "./routes/(public)/auth/register.tsx": $_public_auth_register,
-    "./routes/(public)/auth/reset-password.tsx": $_public_auth_reset_password,
-    "./routes/(public)/auth/thank-you.tsx": $_public_auth_thank_you,
+    "./routes/[locale]/(private)/_middleware.ts": $_locale_private_middleware,
+    "./routes/[locale]/(public)/_layout.tsx": $_locale_public_layout,
+    "./routes/[locale]/(public)/auth/_middleware.tsx":
+      $_locale_public_auth_middleware,
+    "./routes/[locale]/(public)/auth/active.tsx": $_locale_public_auth_active,
+    "./routes/[locale]/(public)/auth/index.tsx": $_locale_public_auth_index,
+    "./routes/[locale]/(public)/auth/login.tsx": $_locale_public_auth_login,
+    "./routes/[locale]/(public)/auth/register-success.tsx":
+      $_locale_public_auth_register_success,
+    "./routes/[locale]/(public)/auth/register.tsx":
+      $_locale_public_auth_register,
+    "./routes/[locale]/(public)/auth/reset-password.tsx":
+      $_locale_public_auth_reset_password,
+    "./routes/[locale]/(public)/auth/thank-you.tsx":
+      $_locale_public_auth_thank_you,
+    "./routes/[locale]/_middleware.ts": $_locale_middleware,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
     "./routes/api/joke.ts": $api_joke,

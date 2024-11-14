@@ -1,10 +1,12 @@
 import translate from "$libs/helpers/tranlate.ts";
 import { FreshContext, Handlers, type PageProps } from "$fresh/server.ts";
-import { Account, IAccount } from "$models";
+import { Account } from "$models";
 import { hashSync } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts"
+import { cryptoRandomString } from "https://deno.land/x/crypto_random_string@1.0.0/mod.ts"
+
 
 interface Props {
-    accounts: IAccount[]
+    accounts: Account[]
 }
 
 export const handler: Handlers = {
@@ -14,19 +16,25 @@ export const handler: Handlers = {
         const email = formData.get("email")?.toString() || "";
         const password = formData.get("password")?.toString() || "";
         
-        const new_account = new Account({
+        const new_account = await Account.create({
             username: username,
             email: email,
-            password: hashSync(password, Deno.env.get("hash_salt")) 
+            password: hashSync(password, Deno.env.get("hash_salt")),
+            activation_key: cryptoRandomString({length: 10, type: 'alphanumeric'})
         })
-
-        await new_account.save();
-        const accounts = await Account.findAll()
-        return _ctx.render({ accounts: accounts });
+        if (new_account) {
+            return new Response("", {
+                status: 301,
+                headers: { Location: "/vi_VN/auth/register-success" },
+              })
+        } else {
+            return _ctx.render({});
+        }
     },
 };
 
-export default function Register({ accounts }: { accounts: Props["accounts"] }) {
+export default function Register(props: PageProps<Props>) {
+
     return (
         <div>
             <form
@@ -72,11 +80,6 @@ export default function Register({ accounts }: { accounts: Props["accounts"] }) 
                 <br />
                 <button type="submit" className={"border border-slate-500 rounded-sm px-4 py-1"}>{translate("register.form.submitBtn.text")}</button>
             </form>
-            <ul>
-                {accounts && accounts.map((account, index) => {
-                    return <li key={index}>{account.username} - {account.email} - {account.password}</li>
-                })}
-            </ul>
         </div>
     );
 }
