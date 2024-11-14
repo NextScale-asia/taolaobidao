@@ -11,6 +11,9 @@
                 "password": {
                     "label": "Mật khẩu"
                 }
+            },
+            "submitBtn": {
+                "text": "Đăng ký"
             }
         }
     }

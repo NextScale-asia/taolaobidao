@@ -3,6 +3,7 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_private_middleware from "./routes/(private)/_middleware.ts";
+import * as $_public_layout from "./routes/(public)/_layout.tsx";
 import * as $_public_auth_middleware from "./routes/(public)/auth/_middleware.tsx";
 import * as $_public_auth_active from "./routes/(public)/auth/active.tsx";
 import * as $_public_auth_index from "./routes/(public)/auth/index.tsx";
@@ -20,6 +21,7 @@ import type { Manifest } from "$fresh/server.ts";
 const manifest = {
   routes: {
     "./routes/(private)/_middleware.ts": $_private_middleware,
+    "./routes/(public)/_layout.tsx": $_public_layout,
     "./routes/(public)/auth/_middleware.tsx": $_public_auth_middleware,
     "./routes/(public)/auth/active.tsx": $_public_auth_active,
     "./routes/(public)/auth/index.tsx": $_public_auth_index,

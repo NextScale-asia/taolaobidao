@@ -34,7 +34,8 @@
     "$islands/": "./islands/",
     "$components/": "./components/",
     "$libs/": "./libs/",
-    "$locale/": "./locale/"
+    "$locale/": "./locale/",
+    "$models": "./models/index.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
