@@ -3,6 +3,9 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_locale_private_middleware from "./routes/[locale]/(private)/_middleware.ts";
+import * as $_locale_public_slug_ from "./routes/[locale]/(public)/[slug].tsx";
+import * as $_locale_public_footer from "./routes/[locale]/(public)/_footer.tsx";
+import * as $_locale_public_header from "./routes/[locale]/(public)/_header.tsx";
 import * as $_locale_public_layout from "./routes/[locale]/(public)/_layout.tsx";
 import * as $_locale_public_auth_middleware from "./routes/[locale]/(public)/auth/_middleware.tsx";
 import * as $_locale_public_auth_active from "./routes/[locale]/(public)/auth/active.tsx";
@@ -12,6 +15,7 @@ import * as $_locale_public_auth_register_success from "./routes/[locale]/(publi
 import * as $_locale_public_auth_register from "./routes/[locale]/(public)/auth/register.tsx";
 import * as $_locale_public_auth_reset_password from "./routes/[locale]/(public)/auth/reset-password.tsx";
 import * as $_locale_public_auth_thank_you from "./routes/[locale]/(public)/auth/thank-you.tsx";
+import * as $_locale_public_index from "./routes/[locale]/(public)/index.tsx";
 import * as $_locale_middleware from "./routes/[locale]/_middleware.ts";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
@@ -23,6 +27,9 @@ import type { Manifest } from "$fresh/server.ts";
 const manifest = {
   routes: {
     "./routes/[locale]/(private)/_middleware.ts": $_locale_private_middleware,
+    "./routes/[locale]/(public)/[slug].tsx": $_locale_public_slug_,
+    "./routes/[locale]/(public)/_footer.tsx": $_locale_public_footer,
+    "./routes/[locale]/(public)/_header.tsx": $_locale_public_header,
     "./routes/[locale]/(public)/_layout.tsx": $_locale_public_layout,
     "./routes/[locale]/(public)/auth/_middleware.tsx":
       $_locale_public_auth_middleware,
@@ -37,6 +44,7 @@ const manifest = {
       $_locale_public_auth_reset_password,
     "./routes/[locale]/(public)/auth/thank-you.tsx":
       $_locale_public_auth_thank_you,
+    "./routes/[locale]/(public)/index.tsx": $_locale_public_index,
     "./routes/[locale]/_middleware.ts": $_locale_middleware,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,

@@ -23,22 +23,31 @@ import { Account } from "$models";
 export const handler: Handlers = {
     async POST(_req: Request, _ctx: FreshContext) {
         const form_data = await _req.formData();
+        console.log("form_data", form_data)
         const username = form_data.get("username")?.toString() || "";
-        const activation_key = form_data.get("activation-key")?.toString() ||
+        const activation_key = form_data.get("activation_key")?.toString() ||
             "";
 
         const activated_account = await Account.findOne({
             where: {
                 username: username,
                 activation_key: activation_key,
-            },
-            limit: 1,
+            }
         });
+        if (activated_account === null) {
+            console.log('Not found!');
+          } else {
+            console.log(activated_account instanceof Account); // true
+            console.log(activated_account.email); // 'My Title'
+          }
+        
 
         if (activated_account) {
             activated_account.activated = true;
             activated_account.activation_key = "";
-            if (await activated_account.save()) {
+            const updated_account = await activated_account.save()
+            console.log(updated_account)
+            if (updated_account) {
                 return new Response("", {
                     status: 301,
                     headers: { Location: "/vi_VN/auth/thank-you" },
@@ -65,26 +74,26 @@ export default function ActivePage(props: PageProps) {
                 className={"w-[400px] border border-slate-300 shadow-sm shadow-slate-400 p-4 rounded m-auto"}
             >
                 <label htmlFor="input-username">
-                    {translate("active.form.fields.username.label")}:
+                    {translate("auth.active.form.fields.username.label")}:
                 </label>
                 <br />
                 <input
                     type="text"
                     id="input-username"
                     name="username"
-                    value={""}
+                    value={props.params.username || ""}
                     className={"border border-slate-400"}
                 />
                 <br />
                 <label htmlFor="input-activation_key">
-                    {translate("active.form.fields.activationKey.label")}:
+                    {translate("auth.active.form.fields.activationKey.label")}:
                 </label>
                 <br />
                 <input
                     type="text"
                     id="input-activation_key"
                     name="activation_key"
-                    value={""}
+                    value={props.params.activationKey || ""}
                     className={"border border-slate-400"}
                 />
                 <br />
@@ -93,7 +102,7 @@ export default function ActivePage(props: PageProps) {
                     type="submit"
                     className={"border border-slate-500 rounded-sm px-4 py-1"}
                 >
-                    {translate("active.form.submitBtn.text")}
+                    {translate("auth.active.form.submitBtn.text")}
                 </button>
             </form>
         </div>

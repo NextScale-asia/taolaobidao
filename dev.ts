@@ -24,12 +24,13 @@ const sequelize = new Sequelize({
         min: 0,
         acquire: 30000,
     },
+    logging: console.log,
     models: [Account],
 });
 
 try {
     await sequelize.authenticate();
-    await sequelize.sync({force: true});
+    await sequelize.sync();
     console.log("Connection has been established successfully.");
     await dev(import.meta.url, "./main.ts", config);
 } catch (error) {

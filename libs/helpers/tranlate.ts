@@ -10,7 +10,7 @@ export default function translate(key_string: string, locale: string = "vi_VN") 
         if (translated[key] !== undefined) {
             translated = translated[key]; // Tiếp tục duyệt qua các thuộc tính
         } else {
-            return undefined; // Trả về undefined nếu key không tồn tại
+            return key_string; // Trả về undefined nếu key không tồn tại
         }
     }
 

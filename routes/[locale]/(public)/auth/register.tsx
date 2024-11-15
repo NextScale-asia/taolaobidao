@@ -42,7 +42,7 @@ export default function Register(props: PageProps<Props>) {
                 className={"w-[400px] border border-slate-300 shadow-sm shadow-slate-400 p-4 rounded m-auto"}
             >
                 <label htmlFor="input-username">
-                    {translate("register.form.fields.username.label")}:
+                    {translate("auth.register.form.fields.username.label")}:
                 </label>
                 <br />
                 <input
@@ -54,7 +54,7 @@ export default function Register(props: PageProps<Props>) {
                 />
                 <br />
                 <label htmlFor="input-email">
-                    {translate("register.form.fields.email.label")}:
+                    {translate("auth.register.form.fields.email.label")}:
                 </label>
                 <br />
                 <input
@@ -66,7 +66,7 @@ export default function Register(props: PageProps<Props>) {
                 />
                 <br />
                 <label htmlFor="input-password">
-                    {translate("register.form.fields.password.label")}:
+                    {translate("auth.register.form.fields.password.label")}:
                 </label>
                 <br />
                 <input
@@ -78,7 +78,7 @@ export default function Register(props: PageProps<Props>) {
                 />
                 <br />
                 <br />
-                <button type="submit" className={"border border-slate-500 rounded-sm px-4 py-1"}>{translate("register.form.submitBtn.text")}</button>
+                <button type="submit" className={"border border-slate-500 rounded-sm px-4 py-1"}>{translate("auth.register.form.submitBtn.text")}</button>
             </form>
         </div>
     );

@@ -1,40 +1,48 @@
 {
-    "register": {
-        "form": {
-            "fields": {
-                "username": {
-                    "label": "Tên đăng nhập"
+    "auth": {
+        "register": {
+            "form": {
+                "fields": {
+                    "username": {
+                        "label": "Tên đăng nhập"
+                    },
+                    "email": {
+                        "label": "Hộp thư"
+                    },
+                    "password": {
+                        "label": "Mật khẩu"
+                    }
                 },
-                "email": {
-                    "label": "Hộp thư"
-                },
-                "password": {
-                    "label": "Mật khẩu"
+                "submitBtn": {
+                    "text": "Đăng ký"
                 }
-            },
-            "submitBtn": {
-                "text": "Đăng ký"
             }
-        }
-    },
-    "registerSuccess": {
-        "notifyContent": "Tài khoản đã được đăng ký. Một mã kích hoạt đã được gửi đến địa chỉ email của bạn. Xin kiểm tra email để lấy được mã kích hoạt và thực hiện các bước theo hướng dẫn tại email.",
-        "activationLink": {
-            "label": "Kích hoạt tài khoản."
-        }
-    },
-    "active": {
-        "form": {
-            "fields": {
-                "username": {
-                    "label": "Tên đăng nhập"
+        },
+        "registerSuccess": {
+            "notifyContent": "Tài khoản đã được đăng ký. Một mã kích hoạt đã được gửi đến địa chỉ email của bạn. Xin kiểm tra email để lấy được mã kích hoạt và thực hiện các bước theo hướng dẫn tại email.",
+            "activationLink": {
+                "label": "Kích hoạt tài khoản."
+            }
+        },
+        "active": {
+            "form": {
+                "fields": {
+                    "username": {
+                        "label": "Tên đăng nhập"
+                    },
+                    "activationKey": {
+                        "label": "Mã kích hoạt"
+                    }
                 },
-                "activationKey": {
-                    "label": "Mã kích hoạt"
+                "submitBtn": {
+                    "text": "Kích hoạt"
                 }
-            },
-            "submitBtn": {
-                "text": "Kích hoạt"
+            }
+        },
+        "thankYou": {
+            "notifyContent": "Tài khoản đã được kích hoạt. Bạn có thể quay trở lại trang đăng nhập để tiếp tục sử dụng dịch vụ.",
+            "loginLink": {
+                "label": "Đăng nhập ngay."
             }
         }
     }

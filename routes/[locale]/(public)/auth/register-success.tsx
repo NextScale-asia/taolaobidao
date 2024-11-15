@@ -8,8 +8,8 @@ export const config: RouteConfig = {
 export default function RegisterSuccess(props: PageProps) {
     return (
         <div>
-            {translate("registerSuccess.notifyContent")}
-            <a href={`/vi_VN/auth/active${props.params.username.length ? "/" + props.params.username : ""}`}>{translate("registerSuccess.activationLink.label")}</a>
+            {translate("auth.registerSuccess.notifyContent")}
+            <a href={`/vi_VN/auth/active${props.params.username.length ? "/" + props.params.username : ""}`}>{translate("auth.registerSuccess.activationLink.label")}</a>
         </div>
     );
 }
