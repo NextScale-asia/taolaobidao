@@ -9,7 +9,7 @@ export default async function IndexPage() {
                     {translate("index.body.sections.hotProduct.sectionTitle.text")}
                 </h3>
             </div>
-            <div className={"section__section-body grid grid-cols-4 border-"}>
+            <div className={"section__section-body grid grid-cols-4 border"}>
                 {Array.from(Array(12).keys()).map((_, i) => {
                         return <Card key={i}>
                             <div className={"card-"}></div>
