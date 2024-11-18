@@ -12,12 +12,12 @@ export const handler: Handlers = {
         const resp = await _ctx.render({
             "HotProducts": Array.from(Array(8).keys()).map((_, i) => {
                 return {
-                    id: i,
+                    id: i * 10,
                     name: "Ten san pham",
                     price: 100000,
                     original_price: 300000,
                     featured_image: "/images/600x250.jpg",
-                    link: `${_ctx.params.locale}/product/san-pham-${i}`,
+                    link: `${_ctx.params.locale}/product/san-pham-${i * 10}`,
                 };
             }),
         });

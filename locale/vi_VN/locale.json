@@ -45,5 +45,20 @@
                 "label": "Đăng nhập ngay."
             }
         }
+    },
+    "product": {
+        "productSummary": {
+            "productDetails": {
+                "state": {
+                    "label": "Tình trạng"
+                },
+                "sku": {
+                    "label": "Mã sản phẩm"
+                },
+                "tags": {
+                    "label": "Thẻ"
+                }
+            }
+        }
     }
 }
