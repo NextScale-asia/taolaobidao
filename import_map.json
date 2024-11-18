@@ -1,7 +1,8 @@
 {
-    "imports": {
-      "$islands/": "./islands/",
-      "$components": "./components/"
-    }
+  "imports": {
+    "$islands/": "./islands/",
+    "$components": "./components/",
+    "react": "https://esm.sh/preact/compat",
+    "react-dom": "https://esm.sh/preact/compat"
   }
-  
+}

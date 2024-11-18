@@ -16,11 +16,14 @@ import * as $_locale_public_auth_register from "./routes/[locale]/(public)/auth/
 import * as $_locale_public_auth_reset_password from "./routes/[locale]/(public)/auth/reset-password.tsx";
 import * as $_locale_public_auth_thank_you from "./routes/[locale]/(public)/auth/thank-you.tsx";
 import * as $_locale_public_index from "./routes/[locale]/(public)/index.tsx";
+import * as $_locale_public_partials_abc from "./routes/[locale]/(public)/partials/abc.tsx";
+import * as $_locale_public_product from "./routes/[locale]/(public)/product.tsx";
 import * as $_locale_middleware from "./routes/[locale]/_middleware.ts";
 import * as $_404 from "./routes/_404.tsx";
 import * as $_app from "./routes/_app.tsx";
 import * as $api_joke from "./routes/api/joke.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
+import * as $Carousel from "./islands/Carousel.tsx";
 import * as $Counter from "./islands/Counter.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
@@ -45,6 +48,8 @@ const manifest = {
     "./routes/[locale]/(public)/auth/thank-you.tsx":
       $_locale_public_auth_thank_you,
     "./routes/[locale]/(public)/index.tsx": $_locale_public_index,
+    "./routes/[locale]/(public)/partials/abc.tsx": $_locale_public_partials_abc,
+    "./routes/[locale]/(public)/product.tsx": $_locale_public_product,
     "./routes/[locale]/_middleware.ts": $_locale_middleware,
     "./routes/_404.tsx": $_404,
     "./routes/_app.tsx": $_app,
@@ -52,6 +57,7 @@ const manifest = {
     "./routes/greet/[name].tsx": $greet_name_,
   },
   islands: {
+    "./islands/Carousel.tsx": $Carousel,
     "./islands/Counter.tsx": $Counter,
   },
   baseUrl: import.meta.url,

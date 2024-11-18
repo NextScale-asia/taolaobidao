@@ -17,5 +17,5 @@
   "css.customData": [
     ".vscode/tailwind.json"
   ],
-  "deno.importMap": ""
+  "deno.importMap": "import_map.json"
 }

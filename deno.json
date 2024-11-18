@@ -23,13 +23,19 @@
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "@sequelize/mariadb": "npm:@sequelize/mariadb@^7.0.0-alpha.43",
+    "clsx": "npm:clsx@^2.1.1",
+    "embla-carousel": "npm:embla-carousel@^8.4.0",
+    "embla-carousel-autoplay": "npm:embla-carousel-autoplay@^8.4.0",
+    "embla-carousel-react": "npm:embla-carousel-react@^8.4.0",
     "mongoose": "npm:mongoose@^8.8.1",
     "preact": "https://esm.sh/preact@10.22.0",
     "preact/": "https://esm.sh/preact@10.22.0/",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.2",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.1",
     "sequelize": "npm:sequelize@^7.0.0-alpha.9",
+    "tailwind-merge": "npm:tailwind-merge@^2.5.4",
     "tailwindcss": "npm:tailwindcss@3.4.1",
+    "tailwindcss-animate": "npm:tailwindcss-animate@^1.0.7",
     "tailwindcss/": "npm:/tailwindcss@3.4.1/",
     "tailwindcss/plugin": "npm:/tailwindcss@3.4.1/plugin.js",
     "$std/": "https://deno.land/std@0.216.0/",
@@ -38,7 +44,9 @@
     "$libs/": "./libs/",
     "$locale/": "./locale/",
     "$models": "./models/index.ts",
-    "uuid": "npm:uuid@^7.0.3"
+    "uuid": "npm:uuid@^7.0.3",
+    "react": "https://esm.sh/preact/compat",
+    "react-dom": "https://esm.sh/preact/compat"
   },
   "compilerOptions": {
     "jsx": "react-jsx",
