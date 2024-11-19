@@ -48,17 +48,21 @@
     },
     "product": {
         "productSummary": {
-            "productDetails": {
-                "state": {
-                    "label": "Tình trạng"
-                },
-                "sku": {
-                    "label": "Mã sản phẩm"
-                },
-                "tags": {
-                    "label": "Thẻ"
-                }
+            "state": {
+                "label": "Tình trạng"
+            },
+            "sku": {
+                "label": "Mã sản phẩm"
+            },
+            "tags": {
+                "label": "Thẻ"
             }
+        },
+        "instantBuyBtn": {
+            "label": "Mua ngay"
+        },
+        "addToCartBtn": {
+            "label": "Thêm vào giỏ hàng"
         }
     }
 }

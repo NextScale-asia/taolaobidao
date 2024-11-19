@@ -7,6 +7,9 @@ import {
 import translate from "$libs/helpers/tranlate.ts";
 import { TProductView } from "$libs/types/TProductView.ts";
 import ProductDiscountBadge from "$components/elements/ProductDiscountBadge.tsx";
+import ProductVariationsCloud from "$components/elements/ProductVariationsCloud.tsx";
+import InstantBuyBtn from "$components/elements/InstantBuyBtn.tsx";
+import AddToCartBtn from "$components/elements/AddToCartBtn.tsx";
 
 interface Data {
     Product: TProductView;
@@ -15,9 +18,9 @@ export const handler: Handlers = {
     async GET(_req: Request, _ctx: FreshContext) {
         // console.log(_ctx);
         const product_id = Number(_ctx.params.slug.replace("san-pham-", ""));
-        const prodcut_data: TProductView = {
+        const product_data: TProductView = {
             id: product_id,
-            name: `Ten san pham ${product_id}`,
+            name: `Ten san pham ${Math.floor(product_id / 10)}`,
             price: 100000,
             original_price: 300000,
             featured_image: "/images/600x250.jpg",
@@ -28,25 +31,26 @@ export const handler: Handlers = {
             variations: [{
                 id: 1,
                 name: "Nhom bien the 1",
-                items: Array.from(Array(10).keys()).map(
+                items: Array.from(Array(4).keys()).map(
                     (_, i): TProductView["variations"][0]["items"][0] => {
+                        console.log(product_id, Math.floor(product_id / 10)*10 + i,product_id == Math.floor(product_id / 10)*10 + i)
                         return {
                             id: Math.floor(product_id / 10) + i,
                             name:
-                                `Bien the ${i} cua san pham ${_ctx.params.slug}`,
+                                `Bien the ${i} cua san pham ${Math.floor(product_id / 10)}`,
                             disabled: Math.random() < 0.2,
-                            link: `${_ctx.params.locale}/product/san-pham-${
-                                Math.floor(product_id / 10) + i
+                            link: `/${_ctx.params.locale}/product/san-pham-${
+                                Math.floor(product_id / 10)*10 + i
                             }`,
                             current:
-                                product_id == Math.floor(product_id / 10) + i,
+                                product_id == Math.floor(product_id / 10)*10 + i,
                         };
                     },
                 ),
             }],
         };
         const resp = await _ctx.render({
-            "Product": prodcut_data,
+            "Product": product_data,
         });
         resp.headers.set("X-Custom-Header", "Hello World");
         return resp;
@@ -58,71 +62,89 @@ export const config: RouteConfig = {
 };
 
 export default function ProductPage(props: PageProps<Data>) {
-    const prodcut_data = props.data.Product;
-    return (
+    const product_data = props.data.Product;
+    return (<div>
         <section
-            className={"product-summary container mx-auto grid grid-cols-8 gap-4"}
+            className={"container mx-auto grid grid-cols-8 gap-4"}
         >
-            <div className="product-summary__product-galleries col-span-3">
+            <div className="product-galleries col-span-3">
                 Galleries
             </div>
-            <div className="product-summary__product-details col-span-3">
-                <h1>
-                    {prodcut_data.name}
+            <div className="product-summary col-span-3">
+                <h1 className={"font-bold text-xl"}>
+                    {product_data.name}
                 </h1>
-                <div>
+                <div className={"flex flex-row gap-1 items-center"}>
                     <strong>
                         {translate(
-                            "product.productSummary.productDetails.state.label",
-                        )}
+                            "product.productSummary.state.label",
+                        )}:
                     </strong>
-                    <span>{prodcut_data.inventory_state}</span>
+                    <span>{product_data.inventory_state}</span>
                 </div>
-                <div>
+                <div className={"flex flex-row gap-1 items-center"}>
                     <strong>
                         {translate(
-                            "product.productSummary.productDetails.sku.label",
-                        )}
+                            "product.productSummary.sku.label",
+                        )}:
                     </strong>
-                    <span>{prodcut_data.sku}</span>
+                    <span>{product_data.sku}</span>
                 </div>
-                <div>
+                <div className={"flex flex-row gap-1 items-center"}>
                     <strong>
                         {translate(
-                            "product.productSummary.productDetails.tags.label",
-                        )}
+                            "product.productSummary.tags.label",
+                        )}:
                     </strong>
                     <span>,,,</span>
                 </div>
                 <div>
                     <div className={"font-bold text-black text-xl"}>
-                        {prodcut_data.price}
+                        {product_data.price}
                     </div>
                 </div>
-                <div>
-                    {(() => {
-                        if (prodcut_data.price != prodcut_data.original_price) {
-                            const discounted = prodcut_data.original_price - prodcut_data.price;
-                            const discounted_rate = discounted / prodcut_data.original_price;
-                            const discounted_percent = Math.floor(discounted_rate * 100);
-                            console.log(discounted_percent)
-                            return (
-                                <div
+                {(() => {
+                    if (product_data.price != product_data.original_price) {
+                        const discounted = product_data.original_price -
+                            product_data.price;
+                        const discounted_rate = discounted /
+                            product_data.original_price;
+                        const discounted_percent = Math.floor(
+                            discounted_rate * 100,
+                        );
+                        console.log(discounted_percent);
+                        return (
+                            <div className={"flex flex-row gap-1 items-center"}>
+                                <span
                                     className={"font-bold text-gray-400 text-xl line-through"}
                                 >
-                                    {prodcut_data.original_price}
-                                    <ProductDiscountBadge
-                                        discounted_percent={discounted_percent}
-                                    />
-                                </div>
-                            );
-                        }
-                    })()}
+                                    {product_data.original_price}
+                                </span>
+                                <ProductDiscountBadge
+                                    discounted_percent={discounted_percent}
+                                />
+                            </div>
+                        );
+                    }
+                })()}
+                {(() => {
+                    if (product_data.variations.length) {
+                        return product_data.variations.map(variation_group => {
+                            return <ProductVariationsCloud variation={variation_group}/>
+                        })
+                    }
+                })()}
+                <div className={"flex flex-row gap-2 mt-2 pt-2 border-t border-gray-200"}>
+                    <InstantBuyBtn product_id={1}/>
+                    <AddToCartBtn product_id={1}/>
                 </div>
             </div>
-            <div className="prodcut-summary__product-extra-infos col-span-2">
+            <div className="product-banners col-span-2">
                 Extra infos
             </div>
         </section>
-    );
+        <section className={"product-tabs"}>
+
+        </section>
+        </div>);
 }

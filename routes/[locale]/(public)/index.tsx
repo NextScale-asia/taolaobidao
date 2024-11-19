@@ -13,7 +13,7 @@ export const handler: Handlers = {
             "HotProducts": Array.from(Array(8).keys()).map((_, i) => {
                 return {
                     id: i * 10,
-                    name: "Ten san pham",
+                    name: "Ten san pham "  + i,
                     price: 100000,
                     original_price: 300000,
                     featured_image: "/images/600x250.jpg",
