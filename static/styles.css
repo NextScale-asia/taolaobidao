@@ -12,3 +12,38 @@
     flex: 0 0 100%;
     min-width: 0;
 }
+
+header #top-header {
+    @apply bg-blue-800 text-white
+}
+
+header #middle-header {
+    @apply bg-blue-500 text-white
+}
+
+header #bottom-header {
+    @apply bg-white text-black border-b border-gray-300
+}
+
+header #middle-header-row-1 {
+    @apply flex flex-row justify-between
+}
+
+header #middle-header__quick-links {
+    @apply flex flex-row justify-between
+}
+
+.block {
+    @apply bg-white rounded-md p-4
+}
+
+.block__title {
+    @apply font-bold text-black
+}
+
+.product-galleries {
+    @apply sticky top-4
+}
+.buy-actions {
+    @apply sticky top-4
+}

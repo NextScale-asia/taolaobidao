@@ -47,6 +47,7 @@
     "$islands/": "./islands/",
     "$components/": "./components/",
     "$libs/": "./libs/",
+    "$static/": "./static/",
     "$locale/": "./locale/",
     "$models": "./models/index.ts",
     "uuid": "npm:uuid@^7.0.3",
@@ -56,8 +57,19 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
-    "lib": ["dom", "deno.ns"],
+    "lib": [
+      "dom",
+      "deno.ns"
+    ],
     "experimentalDecorators": true
   },
-  "nodeModulesDir": "auto"
+  "nodeModulesDir": "auto",
+  "deploy": {
+    "project": "a90c5df3-480f-4e2c-8b87-04892912a226",
+    "exclude": [
+      "**/node_modules"
+    ],
+    "include": [],
+    "entrypoint": "main.ts"
+  }
 }

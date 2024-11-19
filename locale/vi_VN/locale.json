@@ -63,6 +63,18 @@
         },
         "addToCartBtn": {
             "label": "Thêm vào giỏ hàng"
+        },
+        "productDetailedInformations": {
+            "blockTitle": "Thông tin chi tiết"
+        }, 
+        "productDescription": {
+            "blockTitle": "Mô tả sản phẩm"
+        },
+        "buyActions": {
+            "blockTitle": "Mua hàng"
+        },
+        "customerReviews": {
+            "blockTitle": "Đánh giá của khách hàng"
         }
     }
 }

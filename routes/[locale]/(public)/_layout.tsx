@@ -8,7 +8,7 @@ import Header from "./_header.tsx";
 export default async function Layout(req: Request, ctx: FreshContext) {
     console.log("layout");
     return (
-        <div class="layout" f-client-nav>
+        <div class="layout bg-slate-100" f-client-nav>
             <Header />
             <a href="/vi_VN/">Index</a>
             <a href="/vi_VN/abc"  f-partial="./partials/abc">ABC</a>

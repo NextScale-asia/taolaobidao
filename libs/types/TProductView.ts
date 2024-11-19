@@ -22,3 +22,11 @@ export type TProductView = {
     sku: string,
     variations: TProdcutVariationGroup[]
 }
+
+export type TProductBuyActionsNeed = {
+    id: number,
+    name: string,
+    price: number,
+    original_price: number,
+    inventory_quality: number
+}

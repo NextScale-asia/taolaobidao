@@ -25,6 +25,13 @@ import * as $api_joke from "./routes/api/joke.ts";
 import * as $greet_name_ from "./routes/greet/[name].tsx";
 import * as $Carousel from "./islands/Carousel.tsx";
 import * as $Counter from "./islands/Counter.tsx";
+import * as $Galleries_ArrowButton from "./islands/Galleries/ArrowButton.ts";
+import * as $Galleries_DotButton from "./islands/Galleries/DotButton.ts";
+import * as $Galleries_TweenOpacity from "./islands/Galleries/TweenOpacity.ts";
+import * as $Galleries_index from "./islands/Galleries/index.tsx";
+import * as $ProductBuyActionsBlock_AddToCartBtn from "./islands/ProductBuyActionsBlock/AddToCartBtn.tsx";
+import * as $ProductBuyActionsBlock_InstantBuyBtn from "./islands/ProductBuyActionsBlock/InstantBuyBtn.tsx";
+import * as $ProductBuyActionsBlock_index from "./islands/ProductBuyActionsBlock/index.tsx";
 import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
@@ -59,6 +66,15 @@ const manifest = {
   islands: {
     "./islands/Carousel.tsx": $Carousel,
     "./islands/Counter.tsx": $Counter,
+    "./islands/Galleries/ArrowButton.ts": $Galleries_ArrowButton,
+    "./islands/Galleries/DotButton.ts": $Galleries_DotButton,
+    "./islands/Galleries/TweenOpacity.ts": $Galleries_TweenOpacity,
+    "./islands/Galleries/index.tsx": $Galleries_index,
+    "./islands/ProductBuyActionsBlock/AddToCartBtn.tsx":
+      $ProductBuyActionsBlock_AddToCartBtn,
+    "./islands/ProductBuyActionsBlock/InstantBuyBtn.tsx":
+      $ProductBuyActionsBlock_InstantBuyBtn,
+    "./islands/ProductBuyActionsBlock/index.tsx": $ProductBuyActionsBlock_index,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;
