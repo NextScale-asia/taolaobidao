@@ -7,7 +7,7 @@ import { MariaDbDialect } from "npm:@sequelize/mariadb";
 
 import "$std/dotenv/load.ts";
 import { Account } from "$models";
-
+console.log(Deno.env.get("db_name"))
 const sequelize = new Sequelize({
     dialect: MariaDbDialect,
     database: Deno.env.get("db_name"),
@@ -35,4 +35,5 @@ try {
     await dev(import.meta.url, "./main.ts", config);
 } catch (error) {
     console.error("Unable to connect to the database:", error);
+    process.exit()
 }
