@@ -1,3 +1,4 @@
+import { compareSync } from "https://deno.land/x/bcrypt@v0.4.1/mod.ts";
 import {
     CreationOptional,
     DataTypes,
@@ -36,4 +37,11 @@ export class Account
 
     @Attribute(DataTypes.STRING)
     declare activation_key: string | null;
+
+    isRightPassword(plainPassword: string): boolean {
+        if (!this.password) 
+            return false
+        
+        return compareSync(plainPassword, this.password)
+    }
 }
