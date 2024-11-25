@@ -8,12 +8,10 @@ import translate from "$libs/helpers/tranlate.ts";
 import { TProductView } from "$libs/types/TProductView.ts";
 import ProductDiscountBadge from "$components/elements/ProductDiscountBadge.tsx";
 import ProductVariationsCloud from "$components/elements/ProductVariationsCloud.tsx";
-import InstantBuyBtn from "$components/elements/InstantBuyBtn.tsx";
-import AddToCartBtn from "$components/elements/AddToCartBtn.tsx";
 import { GalleriesComponent } from "$islands/Galleries/index.tsx";
-import Counter from '$islands/Counter.tsx';
-import { useComputed, useSignal, useSignalEffect } from "@preact/signals";
-import ProductBuyActionsBlock from '$islands/ProductBuyActionsBlock/index.tsx';
+import ProductBuyActionsBlock from "$islands/ProductBuyActionsBlock/index.tsx";
+import ProductReview from "$components/elements/ProductReview.tsx";
+import ProductReviewsSummary from '$components/elements/ProductReviewsSummary.tsx';
 
 interface Data {
     Product: TProductView;
@@ -226,25 +224,40 @@ export default function ProductPage(props: PageProps<Data>) {
                             </div>
                         </div>
                     </div>
-                                <div className="col-span-9">
-                                    <div className="block customer-reviews">
-                                        <div className="block__title">
-                                            {translate("product.customerReviews.blockTitle")}
-                                        </div>
-                                    </div>
+                    <div className="col-span-9">
+                        <div className="block customer-reviews">
+                            <div className="block__title">
+                                {translate(
+                                    "product.customerReviews.blockTitle",
+                                )}
+                            </div>
+                            <div className="block__content">
+                                <ProductReviewsSummary />
+                                <div className="reviews">
+                                    <ProductReview />
+                                    <ProductReview />
+                                    <ProductReview />
+                                    
                                 </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div className="col-span-2">
                     <div className="block buy-actions">
-                        <div className="block__title">{translate("product.buyActions.blockTitle")}</div>
+                        <div className="block__title">
+                            {translate("product.buyActions.blockTitle")}
+                        </div>
                         <div className="block__content">
-                            <ProductBuyActionsBlock {...{
-                                id: product_data.id,
-                                inventory_quality: 999,
-                                name: product_data.name,
-                                original_price: product_data.original_price,
-                                price: product_data.price
-                            }}/>
+                            <ProductBuyActionsBlock
+                                {...{
+                                    id: product_data.id,
+                                    inventory_quality: 999,
+                                    name: product_data.name,
+                                    original_price: product_data.original_price,
+                                    price: product_data.price,
+                                }}
+                            />
                         </div>
                     </div>
                 </div>

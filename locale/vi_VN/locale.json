@@ -74,7 +74,36 @@
             "blockTitle": "Mua hàng"
         },
         "customerReviews": {
-            "blockTitle": "Đánh giá của khách hàng"
+            "blockTitle": "Đánh giá của khách hàng",
+            "reviewsSummary": {
+                "title": "Tổng quan"
+            },
+            "review": {
+                "author": {
+                    "registeredSince": "Đã tham gia từ %s.",
+                    "countReviews": {
+                        "label": "Đã viết",
+                        "units": "bài đánh giá."
+                    },
+                    "countReceivedLike": {
+                        "label": "Đã nhận",
+                        "units": "lượt cảm ơn."
+                    }
+                },
+                "labels": {
+                    "review5stars": "Cực kỳ hài lòng"
+                },
+                "actions": {
+                    "like": {
+                        "label": "Hữu ích"
+                    },
+                    "share": {
+                        "label": "Chia sẻ"
+                    }
+                },
+                "verifyBoughtBadge": "Đã mua hàng",
+                "date": "Đánh giá vào %s."
+            }
         }
     }
 }

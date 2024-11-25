@@ -8,6 +8,9 @@ interface Data {
 }
 export const handler: Handlers = {
     async GET(_req: Request, _ctx: FreshContext) {
+        
+        console.log("sessionStorage", sessionStorage.getItem("fres-test"))
+        console.log("localStorage", localStorage.getItem("myDemo"))
         // console.log(_ctx);
         const resp = await _ctx.render({
             "HotProducts": Array.from(Array(8).keys()).map((_, i) => {
@@ -27,7 +30,7 @@ export const handler: Handlers = {
 };
 
 export default function IndexPage(props: PageProps<Data>) {
-    console.log('IndexPage', props);
+    // console.log('IndexPage', props);
     return (
         <div>
             <section className="container mx-auto px-4">

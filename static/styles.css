@@ -47,3 +47,19 @@ header #middle-header__quick-links {
 .buy-actions {
     @apply sticky top-4
 }
+
+.stars-bar {
+    @apply flex bg-[url("/images/gray-star.png")] bg-contain p-0 w-20 h-4
+}
+
+.stars-bar .stars {
+    @apply flex bg-[url("/images/yellow-star.png")] bg-contain p-0 h-4
+}
+
+.count-reviews-bar {
+    @apply flex bg-gray-300 rounded p-0
+}
+
+.count-reviews-bar .count-reviews {
+    @apply flex bg-blue-500 rounded p-0
+}
