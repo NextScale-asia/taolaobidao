@@ -19,7 +19,7 @@ export const handler: Handlers = {
         const new_account = await Account.create({
             username: username,
             email: email,
-            password: hashSync(password, Deno.env.get("hash_salt")),
+            password: hashSync(password),//, Deno.env.get("hash_salt")),
             activation_key: cryptoRandomString({length: 10, type: 'alphanumeric'})
         })
         if (new_account) {

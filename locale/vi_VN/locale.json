@@ -44,6 +44,21 @@
             "loginLink": {
                 "label": "Đăng nhập ngay."
             }
+        },
+        "login": {
+            "form": {
+                "fields": {
+                    "username": {
+                        "label": "Tên đăng nhập"
+                    },
+                    "password": {
+                        "label": "Mật khẩu"
+                    }
+                },
+                "submitBtn": {
+                    "text": "Đăng nhập"
+                }
+            }
         }
     },
     "product": {
