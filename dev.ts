@@ -6,7 +6,7 @@ import { Sequelize } from "npm:@sequelize/core";
 import { MariaDbDialect } from "npm:@sequelize/mariadb";
 
 import "$std/dotenv/load.ts";
-import { Account, Session } from "$models";
+import { Account, Permission, Role, Session } from "$models";
 
 const sequelize = new Sequelize({
     dialect: MariaDbDialect,
@@ -25,7 +25,7 @@ const sequelize = new Sequelize({
         acquire: 30000,
     },
     logging: console.log,
-    models: [Account, Session],
+    models: [Account, Session, Role, Permission],
 });
 
 try {

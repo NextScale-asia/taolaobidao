@@ -1,6 +1,6 @@
 import { FreshContext, RouteConfig } from '$fresh/server.ts';
 import * as mod from 'node:crypto';
-import { Session } from '$models';
+import { Account, Role, Session } from '$models';
 import { compareSync } from 'https://deno.land/x/bcrypt@v0.4.1/mod.ts';
 
 export async function handler(
@@ -27,7 +27,13 @@ export async function handler(
 				sessionId: session_id_value,
         isUsing: true
 			},
-      include: ['account']
+      include: [{
+        model: Account,
+        include: [{
+          model: Role,
+          include: ['permissions']
+        }]
+      }]
 		});
     if (!session) {
       is_logged = false

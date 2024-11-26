@@ -3,7 +3,10 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $_locale_private_middleware from './routes/[locale]/(private)/_middleware.ts';
+import * as $_locale_private_admin_middleware from './routes/[locale]/(private)/admin/_middleware.ts';
 import * as $_locale_private_admin_dashboard from './routes/[locale]/(private)/admin/dashboard.tsx';
+import * as $_locale_private_manager_middleware from './routes/[locale]/(private)/manager/_middleware.ts';
+import * as $_locale_private_manager_dashboard from './routes/[locale]/(private)/manager/dashboard.tsx';
 import * as $_locale_public_slug_ from './routes/[locale]/(public)/[slug].tsx';
 import * as $_locale_public_footer from './routes/[locale]/(public)/_footer.tsx';
 import * as $_locale_public_header from './routes/[locale]/(public)/_header.tsx';
@@ -26,6 +29,7 @@ import * as $_app from './routes/_app.tsx';
 import * as $_middleware from './routes/_middleware.ts';
 import * as $api_joke from './routes/api/joke.ts';
 import * as $greet_name_ from './routes/greet/[name].tsx';
+import * as $install from './routes/install.ts';
 import * as $Carousel from './islands/Carousel.tsx';
 import * as $Counter from './islands/Counter.tsx';
 import * as $Galleries_ArrowButton from './islands/Galleries/ArrowButton.ts';
@@ -40,7 +44,10 @@ import type { Manifest } from '$fresh/server.ts';
 const manifest = {
 	routes: {
 		'./routes/[locale]/(private)/_middleware.ts': $_locale_private_middleware,
+		'./routes/[locale]/(private)/admin/_middleware.ts': $_locale_private_admin_middleware,
 		'./routes/[locale]/(private)/admin/dashboard.tsx': $_locale_private_admin_dashboard,
+		'./routes/[locale]/(private)/manager/_middleware.ts': $_locale_private_manager_middleware,
+		'./routes/[locale]/(private)/manager/dashboard.tsx': $_locale_private_manager_dashboard,
 		'./routes/[locale]/(public)/[slug].tsx': $_locale_public_slug_,
 		'./routes/[locale]/(public)/_footer.tsx': $_locale_public_footer,
 		'./routes/[locale]/(public)/_header.tsx': $_locale_public_header,
@@ -64,6 +71,7 @@ const manifest = {
 		'./routes/_middleware.ts': $_middleware,
 		'./routes/api/joke.ts': $api_joke,
 		'./routes/greet/[name].tsx': $greet_name_,
+		'./routes/install.ts': $install,
 	},
 	islands: {
 		'./islands/Carousel.tsx': $Carousel,

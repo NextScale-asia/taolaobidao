@@ -10,6 +10,16 @@ import {
     HasManyHasAssociationMixin,
     HasManyHasAssociationsMixin,
     HasManyCountAssociationsMixin,
+	BelongsToManyAddAssociationMixin,
+	BelongsToManyAddAssociationsMixin,
+	BelongsToManyCountAssociationsMixin,
+	BelongsToManyCreateAssociationMixin,
+	BelongsToManyGetAssociationsMixin,
+	BelongsToManyHasAssociationMixin,
+	BelongsToManyHasAssociationsMixin,
+	BelongsToManyRemoveAssociationMixin,
+	BelongsToManyRemoveAssociationsMixin,
+	BelongsToManySetAssociationsMixin,
 	CreationOptional,
 	DataTypes,
 	InferAttributes,
@@ -23,7 +33,7 @@ import {
 	NotNull,
 	PrimaryKey,
 } from 'npm:@sequelize/core/decorators-legacy';
-import { Session } from '$models';
+import { Role, Session } from '$models';
 export class Account extends Model<InferAttributes<Account>, InferCreationAttributes<Account>> {
 	@Attribute(DataTypes.INTEGER)
 	@PrimaryKey
@@ -69,4 +79,27 @@ export class Account extends Model<InferAttributes<Account>, InferCreationAttrib
 	declare hasSession: HasManyHasAssociationMixin<Session, Session['id']>;
 	declare hasSessions: HasManyHasAssociationsMixin<Session, Session['id']>;
 	declare countSessions: HasManyCountAssociationsMixin<Session>;
+
+	/** Declared by {@link Role#accounts} */
+	declare roles?: Role[];
+
+	declare getRoles: BelongsToManyGetAssociationsMixin<Role>;
+	declare setRoles: BelongsToManySetAssociationsMixin<Role, Role['id']>;
+	declare addRole: BelongsToManyAddAssociationMixin<Role, Role['id']>;
+	declare addRoles: BelongsToManyAddAssociationsMixin<Role, Role['id']>;
+	declare removeRole: BelongsToManyRemoveAssociationMixin<Role, Role['id']>;
+	declare removeRoles: BelongsToManyRemoveAssociationsMixin<Role, Role['id']>;
+	declare createRole: BelongsToManyCreateAssociationMixin<Role>;
+	declare hasRole: BelongsToManyHasAssociationMixin<Role, Role['id']>;
+	declare hasRoles: BelongsToManyHasAssociationsMixin<Role, Role['id']>;
+	declare countRoles: BelongsToManyCountAssociationsMixin<Role>;
+
+	
+
+	can(permission_name: string): boolean {
+		const is_can = this.roles?.some(role => {
+			return role.permissions?.some(permission => permission.name == permission_name)
+		})
+		return !!is_can
+	}
 }
