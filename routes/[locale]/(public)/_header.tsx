@@ -1,9 +1,6 @@
-import { PageProps } from '$fresh/server.ts';
 
-export default function Header(props: PageProps) {
-    if (props.state && props.state.isLogged) {
-         
-    }
+export default function Header() {
+    
     return (
         <header>
             <div id="top-header">
