@@ -6,7 +6,7 @@ import { Sequelize } from "npm:@sequelize/core";
 import { MariaDbDialect } from "npm:@sequelize/mariadb";
 
 import "$std/dotenv/load.ts";
-import { Account } from "$models";
+import { Account, Permission, Role, Session } from "$models";
 
 const sequelize = new Sequelize({
     dialect: MariaDbDialect,
@@ -25,12 +25,12 @@ const sequelize = new Sequelize({
         acquire: 30000,
     },
     logging: console.log,
-    models: [Account],
+    models: [Account, Session, Role, Permission],
 });
 
 try {
     await sequelize.authenticate();
-    await sequelize.sync();
+    await sequelize.sync({alter: true});
     console.log("Connection has been established successfully.");
     await dev(import.meta.url, "./main.ts", config);
 } catch (error) {

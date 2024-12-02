@@ -10,8 +10,15 @@ export async function handler(
 			status: 301,
 			headers: { Location: '/vi_VN/auth/login' },
 		});
-	}
-	const resp = await ctx.next();
-	resp.headers.set('server', 'fresh server');
-	return resp;
+	} else {
+        const user = ctx.state.user
+        console.log(user)
+        if (user.can("access_manager")) {
+            const resp = await ctx.next();
+            return resp;
+        } else {
+            return new Response("You can not access manager area.")
+        }
+    }
+
 }
